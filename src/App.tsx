@@ -56,13 +56,13 @@ export default function App() {
     const difference = Math.abs(userAnswer - q.correctMm);
 
     if (difference <= 5) {
-      setScore(score + 10);
+      setScore((old) => old + 10);
       setFeedback(`✅ Oikein! Vastaus on noin ${q.correctMm} mm`);
     } else if (difference <= 20) {
-      setScore(score + 5);
+      setScore((old) => old + 5);
       setFeedback(`🟡 Melkein! Oikea vastaus on noin ${q.correctMm} mm`);
     } else {
-      setScore(score - 3);
+      setScore((old) => old - 3);
       setFeedback(`❌ Ei ihan. Oikea vastaus on noin ${q.correctMm} mm`);
     }
   }
@@ -71,7 +71,7 @@ export default function App() {
     if (current + 1 >= questions.length) {
       setFinished(true);
     } else {
-      setCurrent(current + 1);
+      setCurrent((old) => old + 1);
       setAnswer("");
       setFeedback("");
     }
